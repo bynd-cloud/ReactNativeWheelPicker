@@ -4,7 +4,7 @@
  * */
 
 import React from 'react'
-import { requireNativeComponent, View } from 'react-native'
+import { requireNativeComponent } from 'react-native'
 
 const WheelPickerView = requireNativeComponent('WheelPicker', null)
 
@@ -20,15 +20,14 @@ type Props = {
   itemTextSize?: number,
   selectedItem?: number,
   backgroundColor?: string,
-  onItemSelected?: number => void,
-  disabled?: boolean,
+  onItemSelected?: number => void
 }
 
 export default class WheelPicker extends React.Component<Props> {
   static defaultProps = {
     style: {
-      width: 'auto',
-      height: 150,
+      width: 200,
+      height: 100,
     },
   }
 
@@ -39,15 +38,13 @@ export default class WheelPicker extends React.Component<Props> {
   }
 
   render() {
-    const { isCyclic, data } = this.props
     return (
-      <View pointerEvents={this.props.disabled ? "none" : "auto"}>
-        <WheelPickerView
-          {...this.props}
-          isCyclic={data.length > 2 ? isCyclic : false}
-          onChange={this.onItemSelected}
-        />
-      </View>
+      <WheelPickerView
+
+        {...this.props}
+  
+        onChange={this.onItemSelected}
+      />
     )
   }
 }
